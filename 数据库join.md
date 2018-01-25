@@ -101,6 +101,9 @@ null | null      | 3    | Darth Vader
 ![](https://coolshell.cn/wp-content/uploads/2011/01/Full_Outer_Join_2.png)
 
 
+![](http://4.bp.blogspot.com/-_HsHikmChBI/VmQGJjLKgyI/AAAAAAAAEPw/JaLnV0bsbEo/s1600/sql%2Bjoins%2Bguide%2Band%2Bsyntax.jpg)
+
+
 
 
 

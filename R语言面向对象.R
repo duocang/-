@@ -188,3 +188,33 @@ student_fun('correcting')
 
 # 以课代表的角色，执行课代表的行为
 student_fun('correcting',1)
+
+#########################################
+# 参加考试，以成绩区别出优等生和次等生
+
+# 修改同学的函数定义，增加扩盎司成绩参数
+student_fun <- function(x = char0, role = 0, score){
+    if ( x == 'attend')
+        print("听课")
+    else if (x == 'homework')
+        print('写作业')
+    else if (x == 'exam'){
+        p <- '考试'
+        if (score > 85)
+            print(paste(p, "成绩优秀", sep = ""))
+        if (score < 85)
+            print(paste0(p, "成绩及格"))
+    } else if (x == 'correcting'){
+        if (role == 1)
+            print("帮老师批改作业")
+        else
+            print("你不是课代表")
+    } else
+        print("你不是student")
+}
+
+# 执行考试函数，考试成绩为大于85分，为优等生
+student_fun('exam', score = 90)
+
+# 执行考试函数，考试成绩为小于70分，为次等生
+student_fun('exam', score = 66)

@@ -102,3 +102,21 @@ s1
 
 # 查看课代表的对象实例
 s2
+
+
+# R语言实现多态
+e1 <- NewInstance('优等生', classes = 'excellent', parents = 'StudentObj')
+e2 <- NewInstance('次等生', classes = 'poor', parents = 'StudentObj')
+
+# 修改同学考试的行为，大于85分结果为优秀，小于70分结果为及格
+student.exam <- function(x, score){
+    p <- '考试'
+    if (score > 85)
+        print(paste(p, "结果为优秀", sep = ""))
+    if (score < 70)
+        print(paste(p, "结果为及格", sep = ""))
+}
+
+# 执行优等生的考试行为，并输入分数为90
+attr(e1, 'class') <- 'exam'
+student(e1, 90)

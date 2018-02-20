@@ -120,3 +120,45 @@ student.exam <- function(x, score){
 # 执行优等生的考试行为，并输入分数为90
 attr(e1, 'class') <- 'exam'
 student(e1, 90)
+
+# 执行次等生的考试行为，并输入分数为66
+attr(e2, 'class') <- 'exam'
+student(e2, 66)
+
+# R语言的面向过程编程
+
+# 定义老师和同学两个对象和行为
+# 辅助变量用于设置初始值
+char0 <- character(1)
+
+# 定义老师对象和行为
+teacher_fun <- function(x = char0){
+    if (x == 'lecture'){
+        print('讲课')
+    } else if (x == "assignment"){
+        print("布置作业")
+    } else if (x == "correcting"){
+        print("批改作业")
+    } else{
+        print("你不是teacher")
+    }
+}
+
+# 定义同学对象和行为
+student_fun <- function(x = char0){
+    if (x == 'attend'){
+        print("听课")
+    } else if (x == 'homework'){
+        print("写作业")
+    } else if (x == "exam"){
+        print("考试")
+    } else {
+        print("你不是student")
+    }
+}
+
+# 执行老师的一个行为
+teacher_fun('lecture')
+
+# 执行同学的一个行为
+student_fun('attend')

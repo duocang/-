@@ -1,4 +1,4 @@
-R语言实现封装
+#R语言实现封装
 
 # 定义老师对象和行为
 teacher <- function(x, ...) 
@@ -55,3 +55,50 @@ attr(ab, 'class') <- c('lecture', 'homework')
 teacher(ab)
 # 执行同学的行为
 student(ab)
+
+# R语言实现继承
+student.correcting <- function(x)
+    print("帮助老师改作业")
+# 辅助变量用于设置初始值
+char0 = character(0)
+
+# 实现继承关系
+create <- function(classes=char0, parents=char0){
+    mro <- c(classes)
+    print("打印mro")
+    print(mro)
+    for (name in parents){
+        print("打印name in parents")
+        print(name)
+        mor <- c(mro, name)
+        ancestors <- attr(get(name), 'type')    # Search by name for an object (get) or zero or more objects (mget).
+        mro <- c(mro, ancestors[ancestors != name])
+    }
+    print("打印create()的结果")
+    print(mro)
+    return(mro)
+}
+
+# 定义构造函数，创建对象
+NewInstance <- function(value=0, classes=char0, parents=char0){
+    obj <- value
+    attr(obj, 'type') <- create(classes, parents)
+    attr(obj, 'class') <- c('homework', 'correting', 'exam')
+    return(obj)
+}
+
+# 创建父对象实例
+StudentObj <- NewInstance()
+
+# 创建子对象实例
+s1 <- NewInstance('普通同学',classes='normal', parents='StudentObj')
+s2 <- NewInstance('课代表',classes='leader', parents='StudentObj')
+
+# 给课代表增加批改作业的行为
+attr(s2, 'class') <- c(attr(s2, 'class'), 'correcting')
+
+# 查看普通同学的对象实例
+s1
+
+# 查看课代表的对象实例
+s2

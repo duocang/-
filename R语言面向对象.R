@@ -127,6 +127,7 @@ student(e2, 66)
 
 # R语言的面向过程编程
 
+#########################################
 # 定义老师和同学两个对象和行为
 # 辅助变量用于设置初始值
 char0 <- character(1)
@@ -162,3 +163,28 @@ teacher_fun('lecture')
 
 # 执行同学的一个行为
 student_fun('attend')
+
+#########################################
+# 区别普通同学和课代表的行为
+
+# 重新定义同学的函数，增加角色判断
+student_fun <- function(x = char0, role = 0){
+    if ( x== 'attend'){
+        print("听课")
+    }else if (x == "homework"){
+        print("写作业")
+    } else if (x == "correcting"){
+        if (role == 1)
+            print("帮助老师批改作业")
+        else
+            print("你不是课代表")
+    } else{
+        print("你不是student")
+    }
+}
+
+# 以普通同学的角色，执行课代表的行为
+student_fun('correcting')
+
+# 以课代表的角色，执行课代表的行为
+student_fun('correcting',1)
